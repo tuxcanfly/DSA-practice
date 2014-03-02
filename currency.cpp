@@ -1,5 +1,6 @@
 #include <iostream>
 #include "currency.h"
+#include "exceptions.h"
 
 using namespace std;
 
