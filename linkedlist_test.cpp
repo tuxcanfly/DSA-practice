@@ -6,9 +6,9 @@ using namespace std;
 
 int main()
 {
-    chain<int> l;
-    l.insert(0, 300);
-    l.insert(0, 100);
-    l.insert(1, 200);
+    chain<const char*> l;
+    l.insert(0, "b");
+    l.insert(0, "a");
+    l.insert(1, "c");
     cout << l.get(0) << ", " << l.get(1) << ", " << l.get(2) << endl;
 }
