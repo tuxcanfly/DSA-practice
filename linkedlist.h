@@ -40,6 +40,7 @@ class chain
 
     protected:
         void checkIndex(int theIndex) const;
+        chainNode<T>& getNode(int theIndex) const;
         chainNode<T>* firstNode;
         int listSize;
 };
@@ -68,13 +69,14 @@ void chain<T>::insert(int theIndex, const T& theElement)
     else if (theIndex == 0)
     {
         chainNode<T>* newNode = new chainNode<T>(theElement);
+        newNode->next = this->firstNode;
         this->firstNode = newNode;
         this->listSize++;
     }
 }
 
 template <class T>
-T& chain<T>::get(int theIndex) const
+chainNode<T>& chain<T>::getNode(int theIndex) const
 {
     int index = 0;
     chainNode<T>* currentNode = this->firstNode;
@@ -82,11 +84,17 @@ T& chain<T>::get(int theIndex) const
     {
         if (index == theIndex)
         {
-            return currentNode->element;
+            return *currentNode;
         }
         currentNode = currentNode->next;
         index++;
     }
+}
+
+template <class T>
+T& chain<T>::get(int theIndex) const
+{
+    return this->getNode(theIndex).element;
 }
 
 #endif
