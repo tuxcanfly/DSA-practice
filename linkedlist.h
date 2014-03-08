@@ -2,6 +2,7 @@
 #define chain_
 
 #include <iostream>
+#include "exceptions.h"
 
 template <class T>
 struct chainNode
@@ -42,5 +43,50 @@ class chain
         chainNode<T>* firstNode;
         int listSize;
 };
+
+template <class T>
+chain<T>::~chain() {}
+
+template <class T>
+chain<T>::chain(int initialCapacity)
+{
+    if (initialCapacity < 1)
+    {
+        throw illegalParameterValue("initialCapacity cannot be less than 1");
+    }
+    this->firstNode = NULL;
+    this->listSize = 0;
+}
+
+template <class T>
+void chain<T>::insert(int theIndex, const T& theElement)
+{
+    if (theIndex < 0 || theIndex > this->size())
+    {
+        throw illegalParameterValue("invalid index");
+    }
+    else if (theIndex == 0)
+    {
+        chainNode<T>* newNode = new chainNode<T>(theElement);
+        this->firstNode = newNode;
+        this->listSize++;
+    }
+}
+
+template <class T>
+T& chain<T>::get(int theIndex) const
+{
+    int index = 0;
+    chainNode<T>* currentNode = this->firstNode;
+    while (currentNode)
+    {
+        if (index == theIndex)
+        {
+            return currentNode->element;
+        }
+        currentNode = currentNode->next;
+        index++;
+    }
+}
 
 #endif
