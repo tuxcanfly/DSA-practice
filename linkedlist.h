@@ -73,6 +73,21 @@ void chain<T>::insert(int theIndex, const T& theElement)
         this->firstNode = newNode;
         this->listSize++;
     }
+    else
+    {
+        chainNode<T>* newNode = new chainNode<T>(theElement);
+        chainNode<T>* prevNode = &this->getNode(theIndex-1);
+        chainNode<T>* currentNode = prevNode->next;
+
+        prevNode->next = newNode;
+
+        if (currentNode)
+        {
+            newNode->next = currentNode;
+        }
+
+        this->listSize++;
+    }
 }
 
 template <class T>

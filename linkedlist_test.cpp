@@ -7,9 +7,8 @@ using namespace std;
 int main()
 {
     chain<int> l;
+    l.insert(0, 300);
     l.insert(0, 100);
-    l.insert(0, 200);
-    cout << l.get(0) << endl;
-    cout << l.get(1) << endl;
-    cout << l.size() << endl;
+    l.insert(1, 200);
+    cout << l.get(0) << ", " << l.get(1) << ", " << l.get(2) << endl;
 }
