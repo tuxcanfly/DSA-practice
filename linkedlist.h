@@ -1,26 +1,9 @@
-#ifndef chain_
-#define chain_
+#ifndef linkedlist_
+#define linkedlist_
 
 #include <iostream>
+#include "node.h"
 #include "exceptions.h"
-
-template <class T>
-struct chainNode
-{
-    T element;
-    chainNode<T> *next;
-
-    chainNode() {}
-    chainNode(const T& element)
-    {
-        this->element = element;
-    }
-    chainNode(const T& element, chainNode<T>* next)
-    {
-        this->element = element;
-        this->next = next;
-    }
-};
 
 template <class T>
 class chain
