@@ -43,7 +43,7 @@ T& stack<T>::top() const
 {
     if (!this->stackTop)
     {
-        throw illegalParameterValue("stack empty");
+        throw StackError();
     }
     return this->stackTop->element;
 }
@@ -53,7 +53,7 @@ void stack<T>::pop()
 {
     if (!this->stackTop)
     {
-        throw illegalParameterValue("stack empty");
+        throw StackError();
     }
     this->stackSize--;
     this->stackTop = this->stackTop->next;

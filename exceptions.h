@@ -15,4 +15,6 @@ class illegalParameterValue
         const char* message;
 };
 
+class StackError {};
+
 #endif
